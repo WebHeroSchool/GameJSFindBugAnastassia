@@ -105,6 +105,59 @@ ul {
     padding-top: 6px;
 }
 
+/*Стили для карточного стола*/
+
+.grid-easy {
+    display: grid;
+    grid-template-columns: 218px 218px 218px;
+    grid-column-gap: 24px;
+    grid-template-rows: 341px;
+    place-content: center;
+}
+
+.grid-medium {
+     display: grid;
+     grid-template-columns: 218px 218px 218px;
+     grid-column-gap: 24px;
+     grid-template-rows: 341px 341px;
+     grid-row-gap: 24px;
+     place-content: center;
+ }
+
+.grid-hard {
+    display: grid;
+    grid-template-columns: 218px 218px 218px 218px 218px;
+    grid-column-gap: 24px;
+    grid-template-rows: 341px 341px;
+    grid-row-gap: 24px;
+    place-content: center;
+}
+
+/*Создание карт для карточного стола*/
+.grid__card {
+    width: 218px;
+    height: 341px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.grid__card-front {
+    background-image: url("img/Card.png");
+}
+
+.grid__card-back,
+.grid__card-bug {
+    transform: rotateY(180deg);
+}
+
+.grid__card-back {
+    background-image: url("img/Card_game_over.png");
+}
+
+.grid__card-bug {
+    background-image: url("img/Card_bug.png");
+}
+
 /*Адаптивное меню*/
 
 @media (max-width: 1350px) {
@@ -348,6 +401,10 @@ ul {
 }
 
 @media (max-width: 470px) {
+    .container {
+        min-height: 616px;
+    }
+
     .header_title {
         font-size: 20px;
         line-height: 27px;
@@ -400,6 +457,10 @@ ul {
 }
 
 @media (max-width: 370px) {
+    .container {
+        min-height: 621px;
+    }
+
     .header_title {
         font-size: 18px;
         line-height: 17px;
