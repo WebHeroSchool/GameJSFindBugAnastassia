@@ -1,21 +1,17 @@
-const optionsLevel = document.querySelectorAll("options__level");
+const optionsLevel = document.getElementsByClassName("options__level");
 const button = document.getElementById("button");
-const pole = document.getElementById("pole");
 let cards = 3;
 let countClick = 0;
 
 // Выбор уровня
 let onClick = function (event) {
-    // event.preventDefault();
+    event.preventDefault();
 
     for (let i = 0; i < optionsLevel.length; i++) {
         optionsLevel[i].classList.remove("options__level__active");
     }
 
-    // event.currentTarget.classList.add('options__level__active');
-
-    // console.log('options__level is clicked');
-    // options__level.onClick = event;
+    event.currentTarget.classList.add('options__level__active');
 
     let selectLevel = document.querySelector("options__level__active").getAttribute("id");
     switch (selectLevel) {
@@ -34,11 +30,34 @@ let onClick = function (event) {
 
 };
 
+// Нажатие кнопки
+let ourPole = function () {
+    const pole = document.getElementById("pole");
+    let gamePole = "<div class='grid__card-game_pole'><div class='grid__card-front'></div><div class='grid__card-back'></div></div>";
+
+    for (let i = 0; i < cards.length; i++) {
+        let poleByCards = document.createElement("div");
+        pole.appendChild(gamePole);
+        poleByCards.innerHTML = gamePole;
+        poleByCards.classList = "grid__card";
+    }
+
+
+    switch (pole) {
+        case 3:
+            pole.classList.toggle(".grid-easy");
+            break;
+
+    }
+};
+
 for (let i = 0; i < optionsLevel.length; i++) {
     optionsLevel[i].addEventListener('click', onClick, false);
 }
 
-console.log(onClick);
+button.addEventListener('click', ourPole);
+
+
 
 
 

@@ -134,6 +134,11 @@ ul {
 }
 
 /*Создание карт для карточного стола*/
+.grid__card-game_pole {
+    width: 100%;
+    height: 100%;
+
+}
 .grid__card {
     width: 218px;
     height: 341px;
