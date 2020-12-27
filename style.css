@@ -150,10 +150,10 @@ ul {
     transform-style: preserve-3d;
 }
 
-.grid__card--game_pole:hover {
-    bottom: 22px;
-    transform: rotate(-3deg);
-}
+/*.grid__card--game_pole:hover {*/
+/*    bottom: 22px;*/
+/*    transform: rotate(-3deg);*/
+/*}*/
 
 .grid__card {
     width: 218px;
@@ -184,8 +184,7 @@ ul {
     transition: 0.6s;
 }
 
-.grid__card-back,
-.grid__card-back-bug {
+.grid__card-back {
     transform: rotateY(180deg);
 }
 
@@ -199,7 +198,7 @@ ul {
     background-image: url("img/Card_bug.png");
     width: 218px;
     height: 341px;
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 .rotate {
