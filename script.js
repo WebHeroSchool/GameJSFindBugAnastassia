@@ -3,6 +3,7 @@ const header = document.getElementById("wrap");
 const section = document.getElementById("list");
 const button = document.getElementById("button");
 const gridContainer = document.body.children[2];
+let openCard = document.querySelectorAll(".grid__card");
 
 let cards = 3;
 let countClick = 0;
@@ -17,7 +18,7 @@ let onClick = function (event) {
 
     event.currentTarget.classList.add('options__level__active');
 
-    let selectLevel = document.querySelector("options__level__active").getAttribute("id");
+    let selectLevel = document.querySelector("options__level__active");
     switch (selectLevel) {
         case "easy":
             cards = 3;
@@ -43,16 +44,6 @@ const invisible = function () {
     section.classList.remove("section");
 };
 
-//Поворот карты:
-let rotateCards = function (event) {
-    event.preventDefault();
-    countClick++;
-    if (countClick < 2) {
-        event.currentTarget.children[0].classList.toggle("rotate");
-    } else {
-        location.reload();
-    }
-};
 
 // Создание карточного поля
 let ourPole = function () {
@@ -63,10 +54,9 @@ let ourPole = function () {
         poleByCards.classList = "grid__card";
         gridContainer.appendChild(poleByCards);
         poleByCards.innerHTML = gamePole;
-        poleByCards.addEventListener("click", rotateCards)
     }
 
-    switch (pole) {
+    switch (cards) {
         case 3:
            gridContainer.classList.toggle("grid-easy");
            break;
@@ -78,10 +68,34 @@ let ourPole = function () {
            break;
     }
 
+    let numRandom = [];
+    for (let i = 0; i < cards; i++) {
+        const random = (Math.floor(Math.random() * 2) === 0);
+        numRandom[i] = random;
+    }
+    console.log(numRandom);
+
+    let back = document.querySelectorAll('.grid__card-back');
+    numRandom.forEach((i, k) => {
+        if (i == true) {
+            back[k].classList.toggle('grid__card-bug');
+            back[k].classList.remove('grid__card-back');
+        }
+    });
+
+};
+
+// Поворот карты:
+let rotateCards = function () {
+    openCard.forEach((item) => {
+        item.addEventListener('click', rotate = () => {
+            item.children[0].classList.toggle("rotate");
+        });
+    });
 };
 
 
-
+//Выполнение всех функций:
 
 for (let i = 0; i < optionsLevel.length; i++) {
     optionsLevel[i].addEventListener('click', onClick, false);
@@ -89,6 +103,6 @@ for (let i = 0; i < optionsLevel.length; i++) {
 
 button.addEventListener("click", invisible);
 button.addEventListener('click', ourPole);
-
+gridContainer.addEventListener("click", rotateCards);
 // console.log(ourPole);
 
