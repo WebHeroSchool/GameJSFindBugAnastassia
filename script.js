@@ -1,5 +1,9 @@
 const optionsLevel = document.getElementsByClassName("options__level");
+const header = document.getElementById("wrap");
+const section = document.getElementById("list");
 const button = document.getElementById("button");
+const gridContainer = document.body.children[2];
+
 let cards = 3;
 let countClick = 0;
 
@@ -30,34 +34,61 @@ let onClick = function (event) {
 
 };
 
-// Нажатие кнопки
+
+// Скрываем меню
+const invisible = function () {
+    header.classList.toggle('invisible');
+    section.classList.toggle("invisible");
+    header.classList.remove('header');
+    section.classList.remove("section");
+};
+
+//Поворот карты:
+let rotateCards = function (event) {
+    event.preventDefault();
+    countClick++;
+    if (countClick < 2) {
+        event.currentTarget.children[0].classList.toggle("rotate");
+    } else {
+        location.reload();
+    }
+};
+
+// Создание карточного поля
 let ourPole = function () {
-    const pole = document.getElementById("pole");
     let gamePole = "<div class='grid__card-game_pole'><div class='grid__card-front'></div><div class='grid__card-back'></div></div>";
 
-    for (let i = 0; i < cards.length; i++) {
+    for (let i = 0; i < cards; i++) {
         let poleByCards = document.createElement("div");
-        pole.appendChild(gamePole);
-        poleByCards.innerHTML = gamePole;
         poleByCards.classList = "grid__card";
+        gridContainer.appendChild(poleByCards);
+        poleByCards.innerHTML = gamePole;
+        poleByCards.addEventListener("click", rotateCards)
     }
-
 
     switch (pole) {
         case 3:
-            pole.classList.toggle(".grid-easy");
+           gridContainer.classList.toggle("grid-easy");
+           break;
+        case 6:
+            gridContainer.classList.toggle("grid-medium");
             break;
-
+       case 10:
+            gridContainer.classList.toggle("grid-hard");
+           break;
     }
+
 };
+
+
+
 
 for (let i = 0; i < optionsLevel.length; i++) {
     optionsLevel[i].addEventListener('click', onClick, false);
 }
 
+button.addEventListener("click", invisible);
 button.addEventListener('click', ourPole);
 
-
-
-
+// console.log(ourPole);
 
