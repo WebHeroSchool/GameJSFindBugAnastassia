@@ -56,8 +56,10 @@ let ourPole = function () {
         poleByCards.classList = "grid__card";
         gridContainer.appendChild(poleByCards);
         poleByCards.innerHTML = gamePole;
-        if (i === random) {
-            randomValue[i].classList.toggle('.grid__card-back-bug');
+        let back = document.querySelectorAll('.grid__card-back');
+        if (i === randomValue) {
+            back[i].classList.toggle('grid__card-back-bug');
+            back[i].classList.remove('grid__card-back');
         }
     }
 
