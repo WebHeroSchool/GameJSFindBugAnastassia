@@ -44,7 +44,7 @@ const invisible = function () {
 };
 
 random = (value) => (Math.floor(Math.random() * value));
-document.body.onclick = () => console.log(random(cards));
+// document.body.onclick = () => console.log(random(cards));
 
 // Создание карточного поля
 let ourPole = function () {
@@ -79,16 +79,35 @@ let ourPole = function () {
 
 };
 
-// Поворот карты:
-    let rotateCards = function (event) {
-        // console.log(event.target);
-        // console.log(event.target.nextElementSibling);
-        event.target.classList.add("rotate")
-    };
+// Поворот карты
+let rotateCards = function (event) {
+    event.target.parentElement.classList.add("rotate")
+};
+
+
+// let  resertPage = function (event) {
+//     openCard.addEventListener("click", function() {
+//         console.log("You clicked!");
+//     });
+// };
+
+// function flipCard() {
+//     this.classList.add("rotate");
+//     const cards = document.querySelectorAll('.grid__card-game_pole');
+//     cards.forEach(item =>
+//         item.addEventListener("click", returnBack));
+// }
+//
+// function returnBack() {
+//     const cards = document.querySelectorAll('.grid__card-game_pole');
+//     document.querySelector('.container').classList.remove('invisible');
+//     document.querySelector('poleByCards').classList.remove('game-field__wrapper');
+//     document.querySelector('poleByCards').innerHTML = '';
+// }
+
 
 
 //Выполнение всех функций:
-
 for (let i = 0; i < optionsLevel.length; i++) {
     optionsLevel[i].addEventListener('click', onClick, false);
 }
@@ -96,5 +115,5 @@ for (let i = 0; i < optionsLevel.length; i++) {
 button.addEventListener("click", invisible);
 button.addEventListener('click', ourPole);
 gridContainer.addEventListener("click", rotateCards);
-// console.log(ourPole);
+
 
