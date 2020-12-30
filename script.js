@@ -84,13 +84,26 @@ let rotateCards = function (event) {
     event.target.parentElement.classList.add("rotate")
 };
 
-// Обновление страницы после открытия карты
-function returnBack() {
-    const cards = document.querySelectorAll('.grid__card-game_pole');
-    document.querySelector('.container').classList.remove('invisible');
-    document.querySelector('poleByCards').classList.remove('game-field__wrapper');
-    document.querySelector('poleByCards').innerHTML = '';
-}
+// Обновление страницы
+// let  resertPage = function (event) {
+//     openCard.addEventListener("click", function() {
+//         console.log("You clicked!");
+//     });
+// };
+
+// function flipCard() {
+//     this.classList.add("rotate");
+//     const cards = document.querySelectorAll('.grid__card-game_pole');
+//     cards.forEach(item =>
+//         item.addEventListener("click", returnBack));
+// }
+//
+// function returnBack() {
+//     const cards = document.querySelectorAll('.grid__card-game_pole');
+//     document.querySelector('.container').classList.remove('invisible');
+//     document.querySelector('poleByCards').classList.remove('game-field__wrapper');
+//     document.querySelector('poleByCards').innerHTML = '';
+// }
 
 
 
