@@ -3,10 +3,10 @@ const header = document.getElementById("wrap");
 const section = document.getElementById("list");
 const button = document.getElementById("button");
 const gridContainer = document.body.children[2];
-let openCard = null;
 
+let openCard = null;
 let cards = 3;
-// let countClick = 0;
+let cardClick = null;
 
 // Выбор уровня
 let onClick = function (event) {
@@ -16,7 +16,7 @@ let onClick = function (event) {
         optionsLevel[i].classList.remove("options__level__active");
     }
 
-    event.currentTarget.classList.add('options__level__active');
+    event.currentTarget.classList.add("options__level__active");
 
     let selectLevel = document.querySelector(".options__level__active");
     switch (selectLevel.id) {
@@ -37,14 +37,13 @@ let onClick = function (event) {
 
 // Скрываем меню
 const invisible = function () {
-    header.classList.toggle('invisible');
+    header.classList.toggle("invisible");
     section.classList.toggle("invisible");
-    header.classList.remove('header');
+    header.classList.remove("header");
     section.classList.remove("section");
 };
 
 random = (value) => (Math.floor(Math.random() * value));
-// document.body.onclick = () => console.log(random(cards));
 
 // Создание карточного поля
 let ourPole = function () {
@@ -56,10 +55,10 @@ let ourPole = function () {
         poleByCards.classList = "grid__card";
         gridContainer.appendChild(poleByCards);
         poleByCards.innerHTML = gamePole;
-        let back = document.querySelectorAll('.grid__card-back');
+        let back = document.querySelectorAll(".grid__card-back");
         if (i === randomValue) {
-            back[i].classList.toggle('grid__card-back-bug');
-            back[i].classList.remove('grid__card-back');
+            back[i].classList.toggle("grid__card-back-bug");
+            back[i].classList.remove("grid__card-back");
         }
     }
 
@@ -81,39 +80,19 @@ let ourPole = function () {
 
 // Поворот карты
 let rotateCards = function (event) {
-    event.target.parentElement.classList.add("rotate")
+    cardClick++;
+    if(cardClick < 2) {
+        event.target.parentElement.classList.add("rotate");
+    } else {
+        window.location.reload();
+    }
 };
-
-// Обновление страницы
-// let  resertPage = function (event) {
-//     openCard.addEventListener("click", function() {
-//         console.log("You clicked!");
-//     });
-// };
-
-// function flipCard() {
-//     this.classList.add("rotate");
-//     const cards = document.querySelectorAll('.grid__card-game_pole');
-//     cards.forEach(item =>
-//         item.addEventListener("click", returnBack));
-// }
-//
-// function returnBack() {
-//     const cards = document.querySelectorAll('.grid__card-game_pole');
-//     document.querySelector('.container').classList.remove('invisible');
-//     document.querySelector('poleByCards').classList.remove('game-field__wrapper');
-//     document.querySelector('poleByCards').innerHTML = '';
-// }
-
-
 
 //Выполнение всех функций:
 for (let i = 0; i < optionsLevel.length; i++) {
-    optionsLevel[i].addEventListener('click', onClick, false);
+    optionsLevel[i].addEventListener("click", onClick, false);
 }
 
 button.addEventListener("click", invisible);
-button.addEventListener('click', ourPole);
+button.addEventListener("click", ourPole);
 gridContainer.addEventListener("click", rotateCards);
-
-
